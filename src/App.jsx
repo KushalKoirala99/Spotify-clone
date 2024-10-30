@@ -5,6 +5,8 @@ import {
   refreshAccessToken,
 } from "./components/spotify-token";
 import MainContent from "./components/MainContent";
+import axios from "axios";
+import { getUserData } from "./components/spotify-data.service";
 
 function App() {
   const [token, setToken] = useState(
@@ -46,6 +48,21 @@ function App() {
       return () => clearTimeout(refreshInterval);
     }
   }, [token, refreshToken, expiresIn]);
+
+  useEffect(() => {
+    if (token) {
+      userData();
+    }
+  }, [token]);
+
+  async function userData() {
+    try {
+      const res = await getUserData(token);
+      console.log(res);
+    } catch (e) {
+      console.log("Failed to get user data:", e);
+    }
+  }
 
   return (
     <>
