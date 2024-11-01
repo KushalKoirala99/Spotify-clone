@@ -37,7 +37,7 @@ export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${re
 // refreshing the token
 
 export async function refreshAccessToken(refreshToken) {
-  const url = 'https://accounts/spotify.com/api/token';
+  const url = 'https://accounts.spotify.com/api/token';
   
   
   // data to be sent
