@@ -1,23 +1,63 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Login from "./components/Login";
+import {
+  getTokenFromUrl,
+  refreshAccessToken,
+} from "./components/spotify-token";
 import MainContent from "./components/MainContent";
 import { getUserData } from "./components/spotify-data.service";
-import { useToken } from "./contexts/tokenContext";
 
 function App() {
+  const [token, setToken] = useState(
+    localStorage.getItem("spotify_token") || null
+  );
+  const [refreshToken, setRefreshToken] = useState(
+    localStorage.getItem("spotify_refresh_token") || null
+  );
+  const [expiresIn] = useState(3600);
 
-  const {token} = useToken();
+  useEffect(() => {
+    //retrieve token from Url
+    const hash = getTokenFromUrl();
+    window.location.hash = " "; //clear the hash to clean up the url
+    const _token = hash.access_token;
+    const _refreshToken = hash.refresh_token;
+
+    if (_token) {
+      setToken(_token);
+      localStorage.setItem("spotify_token", _token);
+    }
+
+    if (_refreshToken) {
+      setRefreshToken(_refreshToken);
+      localStorage.setItem("spotify_refresh_token", _refreshToken);
+    }
+
+    if (_token && _refreshToken) {
+      const refreshInterval = setTimeout(async () => {
+        try {
+          const newAccessToken = await refreshAccessToken(refreshToken);
+          setToken(newAccessToken);
+          sessionStorage.setItem("spotify_token", newAccessToken);
+        } catch (error) {
+          console.log("Failed to refresh access token:", error);
+        }
+      }, (expiresIn - 300) * 1000); // Refresh 5 minutes before expiration
+
+      return () => clearTimeout(refreshInterval);
+    }
+  }, [token, refreshToken, expiresIn]);
 
   useEffect(() => {
     if (token) {
       userData();
     }
-  });
+  }, );
 
   async function userData() {
     try {
       const res = await getUserData(token);
-      console.log(res);
+      // console.log(res);
     } catch (e) {
       console.log("Failed to get user data:", e);
     }

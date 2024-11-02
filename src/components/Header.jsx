@@ -1,11 +1,11 @@
 
-
-
 const Header = () => {
   return (
     <>
-    <div >
-      Header
+    <div className="flex justify-between">
+    <div>spotify logo</div>
+    <div>search bar</div>
+    <div>user profile</div>
     </div>
     </>
   )
