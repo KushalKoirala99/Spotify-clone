@@ -9,10 +9,10 @@ import { getUserData } from "./components/spotify-data.service";
 
 function App() {
   const [token, setToken] = useState(
-    localStorage.getItem("spotify_token") || null
+    sessionStorage.getItem("spotify_token") || null
   );
   const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem("spotify_refresh_token") || null
+    sessionStorage.getItem("spotify_refresh_token") || null
   );
   const [expiresIn] = useState(3600);
 
@@ -25,12 +25,12 @@ function App() {
 
     if (_token) {
       setToken(_token);
-      localStorage.setItem("spotify_token", _token);
+      sessionStorage.setItem("spotify_token", _token);
     }
 
     if (_refreshToken) {
       setRefreshToken(_refreshToken);
-      localStorage.setItem("spotify_refresh_token", _refreshToken);
+      sessionStorage.setItem("spotify_refresh_token", _refreshToken);
     }
 
     if (_token && _refreshToken) {

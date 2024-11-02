@@ -5,7 +5,10 @@ const Content = () => {
     <>
       <div className="flex flex-1 border border-black">
         <Sidebar />
-        <div className=" flex-1">content</div>
+        <div className=" flex-1">content
+        
+
+        </div>
       </div>
     </>
   );
