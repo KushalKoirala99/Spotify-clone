@@ -8,6 +8,6 @@ export async function getUserData(token) {
       },
     });
   } catch (e) {
-    console.log(e);
+    console.log("Error getting the token", e);
   }
 }
