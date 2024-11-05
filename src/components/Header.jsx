@@ -39,24 +39,24 @@ const Header = () => {
             </div>
             {/* search   */}
             <div className=" flex items-center   px-3 rounded-full p-1 bg-[#1F1F1F] hover:border-2px border-white">
-              <div className="flex justify-center items-center p-2 hover:scale-110 cursor-pointer"
-              >
+              <div className="flex justify-center items-center p-2 hover:scale-110 cursor-pointer">
                 <Search color="white" size="30" />
               </div>
               <div>
-              <Input
-                type="text"
-                placeholder="What do you want to play?"
-                className="  w-[300px] bg-transparent border-none  outline-none focus:border-none"
-              ></Input>
+                {/* need to add a X button to clear the search field also make it a seperate component */}
+                <Input
+                  type="text"
+                  placeholder="What do you want to play?"
+                  className="  w-[300px] bg-transparent  border-none text-white font-sans  focus:border-none outline-none"
+                ></Input>
               </div>
-              <div className=" flex justify-center items-center px-2 hover:scale-110 cursor-pointer">
+              <div className=" flex justify-center items-center px-2  hover:scale-110 cursor-pointer">
                 <GalleryVerticalEnd color="white" size="30" />
               </div>
             </div>
           </div>
           {/* user */}
-          <div className=" flex justify-center items-center rounded-[50%] h-12 w-12  bg-[#1F1F1F] hover:scale-110 cursor-pointer " >
+          <div className=" flex justify-center items-center rounded-[50%] h-12 w-12  bg-[#1F1F1F] hover:scale-110 cursor-pointer ">
             {user?.external_urls?.spotify && (
               <a href={user.external_urls.spotify}>
                 {/* add a diloagur box saying you ra leaving the app andn gointo soptify */}
