@@ -6,7 +6,7 @@ import Player from './Player'
 const MainContent = () => {
   return (
     <>
-    <div className='flex flex-col h-screen'>
+    <div className='flex flex-col h-screen '>
     <Header />
     <Content />
     <Player />

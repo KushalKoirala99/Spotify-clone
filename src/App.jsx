@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
-import { getTokenFromUrl, loginUrl } from "./components/spotify-token";
+import { getTokenFromUrl } from "./components/spotify-token";
 import MainContent from "./components/MainContent";
 
 function App() {
@@ -20,24 +20,22 @@ function App() {
     }
 
     const expiresIn = 3600; //Expiration time in seconds
-    const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + duration
+    const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + expiration time
     sessionStorage.setItem("token_expiration", expirationTIme);
   }, []);
 
-  // checking if token has expired
+  //checking if token has expired
   const isExpired = () => {
     const expirationTIme = sessionStorage.getItem("token_expiration");
-    if (!expirationTIme) {
-      return true; //if there is no expiration time treat it as expired
-    }
-    return Date.now() > expirationTIme;
-  };
+   
+    return (Date.now() > expirationTIme); 
+  };  
 
   useEffect(() => {
     if (isExpired()) {
       setToken(null);
-      localStorage.removeItem("spotify_token");
-      localStorage.removeItem("token_expiration"); 
+      sessionStorage.removeItem("spotify_token");
+      sessionStorage.removeItem("token_expiration"); 
     }
   }, []); 
 

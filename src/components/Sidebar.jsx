@@ -2,7 +2,7 @@
 const Sidebar = () => {
   return (
     <>
-    <div className="border border-black  box-border ">Sidebar
+    <div className="border border-black  box-border text-white">Sidebar
       <h1>hello world</h1>
     </div>
     </>

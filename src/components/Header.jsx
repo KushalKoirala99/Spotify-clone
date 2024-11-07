@@ -1,9 +1,8 @@
 import { Icon } from "lucide-react";
 import { house } from "@lucide/lab";
-import { Search, GalleryVerticalEnd } from "lucide-react";
-import { Input } from "./ui/input";
 import { getUserData } from "./spotify-data.service";
 import { useEffect, useState } from "react";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [user, setUser] = useState(null);
@@ -38,21 +37,8 @@ const Header = () => {
               <Icon iconNode={house} size={30} color="white" strokeWidth={2} />
             </div>
             {/* search   */}
-            <div className=" flex items-center   px-3 rounded-full p-1 bg-[#1F1F1F] hover:border-2px border-white">
-              <div className="flex justify-center items-center p-2 hover:scale-110 cursor-pointer">
-                <Search color="white" size="30" />
-              </div>
-              <div>
-                {/* need to add a X button to clear the search field also make it a seperate component */}
-                <Input
-                  type="text"
-                  placeholder="What do you want to play?"
-                  className="  w-[300px] bg-transparent  border-none text-white font-sans  focus:border-none outline-none"
-                ></Input>
-              </div>
-              <div className=" flex justify-center items-center px-2  hover:scale-110 cursor-pointer">
-                <GalleryVerticalEnd color="white" size="30" />
-              </div>
+            <div className=" flex items-center   px-3 rounded-full p-1   bg-[#1F1F1F]   hover:bg-[#2a2a2a]">
+              <SearchBar />
             </div>
           </div>
           {/* user */}
