@@ -1,4 +1,4 @@
-import AppSidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -33,7 +33,7 @@ const Content = () => {
   >
     <ResizablePanel defaultSize={20} className="flex-shrink-0 min-w-[5%] bg-green-400  ">
       <div className="">
-        <AppSidebar />
+        <Sidebar />
       </div>
     </ResizablePanel>
 
