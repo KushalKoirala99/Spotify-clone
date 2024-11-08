@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import { getTokenFromUrl } from "./components/spotify-token";
-import MainPage from "./components/MainPage";
+import Page from "./components/Page";
 
 function App() {
   const [token, setToken] = useState(
@@ -19,29 +19,29 @@ function App() {
       sessionStorage.setItem("spotify_token", _token);
     }
 
-    const expiresIn = 3600; //Expiration time in seconds
-    const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + expiration time
-    sessionStorage.setItem("token_expiration", expirationTIme);
+    // const expiresIn = 3600; //Expiration time in seconds
+    // const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + expiration time
+    // sessionStorage.setItem("token_expiration", expirationTIme);
   }, []);
 
   //checking if token has expired
-  const isExpired = () => {
-    const expirationTIme = sessionStorage.getItem("token_expiration");
+  // const isExpired = () => {
+  //   const expirationTIme = sessionStorage.getItem("token_expiration");
 
-    return Date.now() > expirationTIme;
-  };
+  //   return Date.now() > expirationTIme;
+  // };
 
-  useEffect(() => {
-    if (isExpired()) {
-      setToken(null);
-      sessionStorage.removeItem("spotify_token");
-      sessionStorage.removeItem("token_expiration");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isExpired()) {
+  //     setToken(null);
+  //     sessionStorage.removeItem("spotify_token");
+  //     sessionStorage.removeItem("token_expiration");
+  //   }
+  // }, []);
 
   return (
     <>
-      <div>{token ? <MainPage /> : <Login />}</div>
+      <div>{token ? <Page /> : <Login />}</div>
     </>
   );
 }

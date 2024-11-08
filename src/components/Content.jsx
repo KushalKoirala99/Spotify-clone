@@ -1,4 +1,4 @@
-import MainContent from "./MainPage";
+import MainContent from "./MainContent";
 import Sidebar from "./Sidebar";
 
 const Content = () => {
