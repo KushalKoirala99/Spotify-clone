@@ -3,7 +3,7 @@ import Content from './Content'
 import Player from './Player'
 
 
-const MainContent = () => {
+const MainPage = () => {
   return (
     <>
     <div className='flex flex-col h-screen bg-black'>
@@ -15,4 +15,4 @@ const MainContent = () => {
   )
 }
 
-export default MainContent;
+export default MainPage;

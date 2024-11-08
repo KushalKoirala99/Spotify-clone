@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import { getTokenFromUrl } from "./components/spotify-token";
-import MainContainer from "./components/MainContainer";
+import MainPage from "./components/MainPage";
 
 function App() {
   const [token, setToken] = useState(
@@ -27,21 +27,21 @@ function App() {
   //checking if token has expired
   const isExpired = () => {
     const expirationTIme = sessionStorage.getItem("token_expiration");
-   
-    return (Date.now() > expirationTIme); 
-  };  
+
+    return Date.now() > expirationTIme;
+  };
 
   useEffect(() => {
     if (isExpired()) {
       setToken(null);
       sessionStorage.removeItem("spotify_token");
-      sessionStorage.removeItem("token_expiration"); 
+      sessionStorage.removeItem("token_expiration");
     }
-  }, []); 
+  }, []);
 
   return (
     <>
-      <div>{token ? <MainContainer /> : <Login />}</div>
+      <div>{token ? <MainPage /> : <Login />}</div>
     </>
   );
 }
