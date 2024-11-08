@@ -1,7 +1,7 @@
 
 const Player = () => {
   return (
-    <div>Player</div>
+    <div className="flex-shrink-0 h-auto">Player</div>
   )
 }
 

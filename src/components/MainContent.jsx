@@ -9,7 +9,7 @@ const MainContent = () => {
     <div className='flex flex-col h-screen '>
     <Header />
     <Content />
-    <Player />
+    {/* <Player className=""/> */}
     </div>
     </>
   )

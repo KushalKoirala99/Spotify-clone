@@ -33,7 +33,7 @@ const Header = () => {
 
           <div className="flex items-center justify-between">
             {/* home button */}
-            <div className="flex items-center justify-center rounded-[50%] h-[50px] w-[50px] bg-[#1F1F1F] mr-2 hover:scale-110 cursor-pointer">
+            <div className="flex items-center justify-center rounded-[50%] h-[50px] w-[50px] bg-[#1F1F1F] mr-2 hover:scale-110 cursor-pointer hover:bg-[#2a2a2a]">
               <Icon iconNode={house} size={30} color="white" strokeWidth={2} />
             </div>
             {/* search   */}
@@ -42,7 +42,7 @@ const Header = () => {
             </div>
           </div>
           {/* user */}
-          <div className=" flex justify-center items-center rounded-[50%] h-12 w-12  bg-[#1F1F1F] hover:scale-110 cursor-pointer ">
+          <div className=" flex justify-center items-center rounded-[50%] h-12 w-12  bg-[#1F1F1F] hover:scale-110 cursor-pointer hover:bg-[#2a2a2a] ">
             {user?.external_urls?.spotify && (
               <a href={user.external_urls.spotify}>
                 {/* add a diloagur box saying you ra leaving the app andn gointo soptify */}
