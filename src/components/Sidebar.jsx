@@ -1,16 +1,25 @@
+import { Library } from "lucide-react";
+import SidebarPlaylist from "./SidebarPlaylist";
 
 const Sidebar = () => {
   return (
     <>
-    <div className="border border-black flex  text-white overflow-scroll">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam saepe ipsum libero odit possimus corporis vel sunt eligendi distinctio esse id expedita nobis tenetur consectetur, nesciunt quas. Doloremque, laudantium libero?
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam facere rerum saepe qui quos deleniti provident tenetur. Nemo dicta unde totam in? Facere, optio exercitationem eos reprehenderit sunt in reiciendis.
-
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi veniam fugit quo esse reiciendis autem impedit consequatur dicta eligendi? Cumque laboriosam laborum esse animi? Asperiores molestias rerum possimus eligendi debitis.   
-           
+      <div className="border border-black bg-spotify-sidebar w-80 rounded-lg bg text-white">
+        {/* logo for  library */}
+        <div className="flex p-2 mb-3">
+          <div className="">
+            <Library size={40} color="white"/>
+          </div>
+          <div className=" flex items-center ml-4 ">
+            Your Library
+          </div>
+        </div>
+        <div>
+          <SidebarPlaylist />
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

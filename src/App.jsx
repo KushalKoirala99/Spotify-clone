@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import { getTokenFromUrl } from "./components/spotify-token";
-import MainContent from "./components/MainContent";
+import MainContainer from "./components/MainContainer";
 
 function App() {
   const [token, setToken] = useState(
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <div>{token ? <MainContent /> : <Login />}</div>
+      <div>{token ? <MainContainer /> : <Login />}</div>
     </>
   );
 }
