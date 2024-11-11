@@ -1,13 +1,8 @@
 import { Library } from "lucide-react";
-import { useState } from "react";
 import SidebarItems from "./SidebarItems";
 
-const Sidebar = () => {
-  const [isOpen,setIsOpen] = useState(true)
-
-  const toggleSidebar = () =>{
-    setIsOpen((prev) => !prev);
-  };
+const Sidebar = ({isOpen,toggleSidebar}) => {
+ 
   return (
     <>
       <div className={`border border-black bg-spotify-sidebar w-80 rounded-lg bg text-gray-500 transition-all duration-300 ease-in-out ${isOpen ? 'max-w-80' : 'max-w-20'}`}>

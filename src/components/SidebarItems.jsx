@@ -1,12 +1,13 @@
 
+
 const SidebarItems = () => {
 
   
   return (
     <>
-      
-        Playlist here
-      
+      <div>
+         Your playlist
+      </div>  
     </>
   );
 };
