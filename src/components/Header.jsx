@@ -9,9 +9,9 @@ const Header = () => {
 
   useEffect(() => {
     async function getUserInfo() {
-      const token = sessionStorage.getItem("spotify_token");
+      let token = sessionStorage.getItem('spotify_token')
       const userInfo = await getUserData(token);
-      console.log(userInfo);
+      // console.log(userInfo);
       setUser(userInfo.data);
     }
 
