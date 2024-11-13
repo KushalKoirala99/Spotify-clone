@@ -22,7 +22,7 @@ const Sidebar = ({isOpen,toggleSidebar}) => {
         </button>
 
         {/* playlist starts from here */}
-        <div >
+        <div className="overflow-x-hidden whitespace-normal break-words">
           <SidebarItems />
         </div>
       </div>

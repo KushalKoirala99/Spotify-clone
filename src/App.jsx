@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import { getTokenFromUrl } from "./components/spotify-token";
 import Page from "./components/Page";
-import { UserProvider } from "./contexts/UserContext";
-
-
-
+import { setAccessToken } from "./components/data.service";
+import { SpotifyProvider } from "./contexts/SpotifyContext";
 
 function App() {
   const [token, setToken] = useState(
@@ -21,12 +19,15 @@ function App() {
     if (_token) {
       setToken(_token);
       sessionStorage.setItem("spotify_token", _token);
+      setAccessToken(_token);
+    } else if (token) {
+      setAccessToken(token);
     }
-  
+
     // const expiresIn = 3600; //Expiration time in seconds
     // const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + expiration time
     // sessionStorage.setItem("token_expiration", expirationTIme);
-  }, []);
+  }, [token]);
 
   //checking if token has expired
   // const isExpired = () => {
@@ -45,13 +46,15 @@ function App() {
 
   return (
     <>
-      <div>{token ? (
-        <UserProvider>
-         <Page />
-        </UserProvider>
-        ) : <Login />}
-        
-        </div>
+      <div>
+        {token ? (
+          <SpotifyProvider>
+            <Page />
+          </SpotifyProvider>
+        ) : (
+          <Login />
+        )}
+      </div>
     </>
   );
 }
