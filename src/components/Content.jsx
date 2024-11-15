@@ -11,7 +11,7 @@ const Content = () => {
   };
   return (
     <>
-      <div className="flex flex-1 overflow-hidden mt-2 ">
+      <div className="flex flex-1 overflow-hidden mt-4">
         <div className={`${isOpen?'overflow-auto':'overflow-x-hidden'}`}>
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
         </div>

@@ -21,9 +21,9 @@ const Header = () => {
   return (
     <>
       <div className="  bg-black p-2 box-border">
-        <div className="flex  justify-between bg-black items-center">
+        <div className="flex  justify-center bg-black items-center md:justify-center lg:justify-between">
           {/* spotify logo */}
-          <div>
+          <div className="hidden md:block lg:block">
             <img
               src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
               alt="spotify logo"
