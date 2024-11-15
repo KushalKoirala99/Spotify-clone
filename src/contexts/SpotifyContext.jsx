@@ -1,5 +1,10 @@
 import { useState, createContext, useEffect, useContext } from "react";
-import { getTopArtist, getUserData, getUserPlaylist } from "@/components/data.service";
+import {
+  getNewRelease,
+  getTopArtist,
+  getUserData,
+  getUserPlaylist,
+} from "@/components/data.service";
 
 const SpotifyContext = createContext();
 
@@ -7,15 +12,15 @@ export const SpotifyProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [userId, setUserId] = useState();
   const [userPlaylist, setUserPlaylist] = useState();
-  const [topArtist,setTopArtist] = useState();
+  const [topArtist, setTopArtist] = useState();
+  const [newrelease,setNewRelease] = useState();
+  // const [recentlyPlayed,setRecentlyPlayed] = useState();
 
-  // test img for player 
-  const [img,setImg] = useState();
+
 
   useEffect(() => {
     async function getUser() {
       const res = await getUserData();
-      //   console.log(res);
       setUser(res);
       if (res) {
         setUserId(res.id);
@@ -29,17 +34,20 @@ export const SpotifyProvider = ({ children }) => {
     async function getPlaylist() {
       const list = await getUserPlaylist(userId);
       const topArtist = await getTopArtist();
-      console.log(list)
-     setTopArtist(topArtist)
-      setUserPlaylist(list)
-      setImg(list[0].images[0].url)
+      setTopArtist(topArtist);
+      setUserPlaylist(list);
+
+        const newRel= await getNewRelease();
+        setNewRelease(newRel)
+      // const recentlyPlayed = await getRecentlyPlayed();
+      // setRecentlyPlayed(recentlyPlayed)
     }
 
     getPlaylist();
-  },[]);
+  }, []);
 
   return (
-    <SpotifyContext.Provider value={{ userPlaylist , topArtist , img }}>
+    <SpotifyContext.Provider value={{ userPlaylist, topArtist, newrelease   }}>
       {children}
     </SpotifyContext.Provider>
   );

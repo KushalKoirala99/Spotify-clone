@@ -9,11 +9,10 @@ export const setAccessToken = () => {
   }
 };
 
-//get userdata
+//get userId
 export const getUserData = () => {
   return spotifyApi.getMe().then(
     function (data) {
-      // console.log("User info", data);
       return data;
     },
     function (e) {
@@ -26,7 +25,6 @@ export const getUserData = () => {
 export const getUserPlaylist = (userid) => {
   return spotifyApi.getUserPlaylists(userid).then(
     function (data) {
-      // console.log(data.items)
       return data.items;
     },
     function (e) {
@@ -39,7 +37,6 @@ export const getUserPlaylist = (userid) => {
 export const getTopArtist = () => {
   return spotifyApi.getMyTopArtists().then(
     function (data) {
-      console.log(data.items);
       return data.items;
     },
     function (e) {
@@ -47,3 +44,28 @@ export const getTopArtist = () => {
     }
   );
 };
+
+// new releases
+export const getNewRelease = ()  =>{
+  return spotifyApi.getNewReleases().then(
+    function (data){
+      console.log(data.albums.items)
+      return data.albums.items;
+    },
+    function(e){
+      console.log('error fetching new release',e)
+    }
+  )
+}
+
+//recommendation
+// export const getRecommendation = () =>{
+//   return spotifyApi.getMySaced.then(
+//     function (data) {
+//       console.log(data)
+//     },
+//     function(e){
+//       console.log('error fetching Recommendation',e);
+//     }
+//   )
+// }

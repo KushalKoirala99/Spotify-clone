@@ -15,7 +15,7 @@ const Content = () => {
         <div className={`${isOpen?'overflow-auto':'overflow-x-hidden'}`}>
           <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
         </div>
-        <div className="mx-1 border  border-black flex-1 rounded-lg overflow-y-auto">
+        <div className="mx-1  flex-1  overflow-y-auto overflow-x-hidden">
           <MainContent />
         </div>
       </div>

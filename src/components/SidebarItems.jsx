@@ -16,7 +16,7 @@ const SidebarItems = ({isOpen}) => {
                     className={` ${isOpen? `w-[60px]`: `w-max`} rounded-lg`}
                   ></img>
                   <div className="hover:text-white">
-                    <div className={`${isOpen? `block`: `hidden`}`}>{item.name}</div>
+                    <div className={`${isOpen? `block`: `hidden`}`}>{item.name.toUpperCase()}</div>
                     <div className={`${isOpen? `block`: `hidden`}`}>{item.type}</div>
                   </div>
                 </div>
