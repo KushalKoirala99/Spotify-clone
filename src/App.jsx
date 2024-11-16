@@ -7,7 +7,7 @@ import { SpotifyProvider } from "./contexts/SpotifyContext";
 
 function App() {
   const [token, setToken] = useState(
-    sessionStorage.getItem("spotify_token") || null
+    localStorage.getItem("spotify_token") || null
   ); // need to change to to localStorage
 
   useEffect(() => {
@@ -18,31 +18,16 @@ function App() {
 
     if (_token) {
       setToken(_token);
-      sessionStorage.setItem("spotify_token", _token);
+      localStorage.setItem("spotify_token", _token);
       setAccessToken(_token);
     } else if (token) {
       setAccessToken(token);
     }
 
-    // const expiresIn = 3600; //Expiration time in seconds
-    // const expirationTIme = Date.now() + expiresIn * 1000; //current time in miliseconds + expiration time
-    // sessionStorage.setItem("token_expiration", expirationTIme);
+  
   }, [token]);
 
-  //checking if token has expired
-  // const isExpired = () => {
-  //   const expirationTIme = sessionStorage.getItem("token_expiration");
-
-  //   return Date.now() > expirationTIme;
-  // };
-
-  // useEffect(() => {
-  //   if (isExpired()) {
-  //     setToken(null);
-  //     sessionStorage.removeItem("spotify_token");
-  //     sessionStorage.removeItem("token_expiration");
-  //   }
-  // }, []);
+ 
 
   return (
     <>
