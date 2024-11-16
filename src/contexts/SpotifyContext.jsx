@@ -1,7 +1,9 @@
 import { useState, createContext, useEffect, useContext } from "react";
 import {
+  getFeaturedlist,
   getNewRelease,
   getTopArtist,
+  getTopTracks,
   getUserData,
   getUserPlaylist,
 } from "@/components/data.service";
@@ -14,8 +16,8 @@ export const SpotifyProvider = ({ children }) => {
   const [userPlaylist, setUserPlaylist] = useState();
   const [topArtist, setTopArtist] = useState();
   const [newrelease,setNewRelease] = useState();
-  // const [recentlyPlayed,setRecentlyPlayed] = useState();
-
+  const [topTracks,setTopTracks] = useState();
+  const [featured,setFeatured] = useState();
 
 
   useEffect(() => {
@@ -39,6 +41,12 @@ export const SpotifyProvider = ({ children }) => {
 
         const newRel= await getNewRelease();
         setNewRelease(newRel)
+
+        const tracks = await getTopTracks();
+        setTopTracks(tracks)
+
+        const featracks = await getFeaturedlist();
+        setFeatured(featracks)
       // const recentlyPlayed = await getRecentlyPlayed();
       // setRecentlyPlayed(recentlyPlayed)
     }
@@ -47,7 +55,7 @@ export const SpotifyProvider = ({ children }) => {
   }, []);
 
   return (
-    <SpotifyContext.Provider value={{ userPlaylist, topArtist, newrelease   }}>
+    <SpotifyContext.Provider value={{ userPlaylist, topArtist, newrelease , topTracks , featured  }}>
       {children}
     </SpotifyContext.Provider>
   );

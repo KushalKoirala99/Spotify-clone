@@ -49,7 +49,6 @@ export const getTopArtist = () => {
 export const getNewRelease = ()  =>{
   return spotifyApi.getNewReleases().then(
     function (data){
-      console.log(data.albums.items)
       return data.albums.items;
     },
     function(e){
@@ -58,14 +57,28 @@ export const getNewRelease = ()  =>{
   )
 }
 
-//recommendation
-// export const getRecommendation = () =>{
-//   return spotifyApi.getMySaced.then(
-//     function (data) {
-//       console.log(data)
-//     },
-//     function(e){
-//       console.log('error fetching Recommendation',e);
-//     }
-//   )
-// }
+//top tracks
+export const getTopTracks = () =>{
+  return spotifyApi.getMyTopTracks().then(
+    function (data){
+      return data.items
+    },
+    function(e){
+      console.log('error fetching top artist',e)
+    }
+  )
+
+}
+
+
+//featured playlist
+export const getFeaturedlist = () =>{
+  return spotifyApi.getFeaturedPlaylists().then(
+   function(data){
+    return (data.playlists.items)
+   },
+   function(e){
+    console.log('error fetching getFeatured list',e)
+   }
+  )
+}

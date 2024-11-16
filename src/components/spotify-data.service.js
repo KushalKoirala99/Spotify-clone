@@ -13,7 +13,6 @@ import axios from "axios";
   }
 }
 
-//user playlist
 
 
 export {getUserData }

@@ -7,8 +7,8 @@ import { SpotifyProvider } from "./contexts/SpotifyContext";
 
 function App() {
   const [token, setToken] = useState(
-    localStorage.getItem("spotify_token") || null
-  ); // need to change to to localStorage
+    sessionStorage.getItem("spotify_token") || null
+  ); // need to change to to sessionStorage
 
   useEffect(() => {
     //retrieve token from Url
@@ -18,7 +18,7 @@ function App() {
 
     if (_token) {
       setToken(_token);
-      localStorage.setItem("spotify_token", _token);
+      sessionStorage.setItem("spotify_token", _token);
       setAccessToken(_token);
     } else if (token) {
       setAccessToken(token);
